@@ -1,0 +1,57 @@
+{
+  "name": "emailie-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"ts-node-dev src/index.ts",
+    "lint": "eslint ./src/*.ts --fix",
+    "build-ts": "tsc",
+    "minify": "terser --compress -o dist/index.min.js dist/index.js  ",
+    "build": "npm run lint && npm run build-ts && npm run minify"
+  },
+  "keywords": [],
+  "author": "Vira O.P.",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.1.2",
+    "terser": "^5.29.2",
+    "ts-node-dev": "^2.0.0"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "no-unused-vars": "warn"
+    }
+  }
+}
