@@ -11,6 +11,10 @@
     "strict": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./custom-types",
+      "./node_modules/@types"
+    ]
   }
 }
