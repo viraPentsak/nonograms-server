@@ -1,18 +1,20 @@
-import express, {Application} from "express";
-import bodyParser from "body-parser";
+import express from "express";
+import loaders from "./loaders";
+import config from "./config";
 
-import puzzleRoutes from "./routes/puzzleRoutes";
-import connectToDB from "./db";
+const port = config.port;
 
-connectToDB();
+async function startServer() {
+    const app = express();
+    await loaders(app);
 
-const port = process.env.PORT || 5000;
-const app: Application = express();
+    app.listen(port, ()=>{
+        console.log(`Server running on port ${port}`);
+    })
+        .on('error', error=>{
+            console.log(error.message);
+            process.exit(1);
+        });
+}
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(puzzleRoutes);
-
-
-app.listen(port, () => {
-    console.log(`Listening on port #${port}`);
-});
+startServer();

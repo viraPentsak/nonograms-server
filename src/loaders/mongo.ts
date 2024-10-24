@@ -1,10 +1,8 @@
 import mongoose from "mongoose";
-import keys from "./config/keys";
+import config from "../config";
 
-const URI = keys.mongoURI;
-
-const connectToDB = () => {
-    mongoose.connect(URI)
+export default async function () {
+    mongoose.connect(config.mongoURI)
         .then(() => {
             console.log("Connection established");
         })
@@ -12,5 +10,3 @@ const connectToDB = () => {
             console.log("Error! ", e.message);
         })
 }
-
-export default connectToDB;
